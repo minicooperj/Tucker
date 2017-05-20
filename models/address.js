@@ -1,44 +1,47 @@
 module.exports = function(sequelize, DataTypes) {
-    var Customer = sequelize.define("Customer", {
-        first_name: {
+    var Address = sequelize.define("Address", {
+        street: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        last_name: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        dob: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            // defaultValue: DataTypes.NOW
-        },
-        email: {
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+        zip_code: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [5, 5]
+            }
+        },
+
+
     }, {
         // We're saying that we want our Author to have Posts
         classMethods: {
             associate: function(models) {
-                // Associating Author with Posts
-                // When an Author is deleted, also delete any associated Posts
-                Customer.hasOne(models.Address);
+                // An Author (foreignKey) is required or a Post can't be made
+                Address.belongsTo(models.Customer, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
             }
         }
     });
-    return Customer;
+    return Address;
 };
