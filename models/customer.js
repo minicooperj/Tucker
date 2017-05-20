@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
         dob: {
             type: DataTypes.DATE,
             allowNull: false,
-            // defaultValue: DataTypes.NOW
+            defaultValue: sequelize.fn('NOW')
         },
         email: {
             type: DataTypes.STRING,
@@ -29,14 +29,27 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.fn('NOW'),
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            defaultValue: sequelize.fn('NOW'),
         }
     }, {
-        // We're saying that we want our Author to have Posts
         classMethods: {
             associate: function(models) {
-                // Associating Author with Posts
-                // When an Author is deleted, also delete any associated Posts
                 Customer.hasOne(models.Address);
+            }
+        }
+    }, {
+        timestamps: false
+    }, {
+        classMethods: {
+            associate: function(models) {
+                Customer.hasOne(models.Bucket);
             }
         }
     });

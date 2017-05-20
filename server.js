@@ -11,6 +11,7 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
+var customerORM = require("./config/customer_orm.js");
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -22,8 +23,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("./public"));
 
 // Routes =============================================================
-
-
+customerORM.getCustomers(function(data) {
+    console.log(data);
+});
 
 //====================================================================
 
