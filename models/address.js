@@ -15,17 +15,17 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         state: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(2),
             allowNull: false,
             validate: {
-                len: [1]
+                isAlphanumeric: true
             }
         },
         zip_code: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER(5),
             allowNull: false,
             validate: {
-                len: [5, 5]
+                isNumeric: true
             }
         }
     }, {

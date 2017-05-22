@@ -6,6 +6,11 @@ var customerORM = {
             callback(newCustomer);
         });
     },
+    addCustomerAddress: (newAddress, callback) => {
+        db.Address.create(newAddress).then((address) => {
+            callback(address);
+        })
+    },
     getCustomers: (callback) => {
         db.Customer.findAll({
             include: [db.Address]
@@ -30,11 +35,11 @@ var customerORM = {
                 CustomerId: customerId
             },
             include: [db.Products]
-        }).then(function(dbAddress) {
-            callback(dbAddress);
+        }).then(function(busket) {
+            callback(bucket);
         });
     },
-    updateCustomerAddress: (newAddress, customerId, callback) => {
+    updateCustomerAddress: (newAddress, callback) => {
         db.Address.update(newAddress, {
             where: {
                 customerId: customerId
