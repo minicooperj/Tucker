@@ -27,14 +27,13 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [5, 5]
             }
-        },
-
-
-    }, { timestamps: false }, {
-        // We're saying that we want our Author to have Posts
+        }
+    }, {
+        timestamps: false,
+        // We're saying that we want our Customer to have Address
         classMethods: {
             associate: function(models) {
-                // An Author (foreignKey) is required or a Post can't be made
+                // An Customer (foreignKey) is required or a Customer can't be made
                 Address.belongsTo(models.Customer, {
                     foreignKey: {
                         allowNull: false

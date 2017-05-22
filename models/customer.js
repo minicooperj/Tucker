@@ -29,26 +29,12 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            defaultValue: sequelize.fn('NOW'),
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            defaultValue: sequelize.fn('NOW'),
         }
     }, {
+        timestamps: false,
         classMethods: {
             associate: function(models) {
                 Customer.hasOne(models.Address);
-            }
-        }
-    }, {
-        timestamps: false
-    }, {
-        classMethods: {
-            associate: function(models) {
                 Customer.hasOne(models.Bucket);
             }
         }
