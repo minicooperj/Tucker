@@ -1,38 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    var Customer = sequelize.define("Customer", {
-        first_name: {
+    var Store = sequelize.define("Store", {
+        website: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1],
-                isAlphanumeric: true
+                len: [1]
             }
         },
-        last_name: {
+        storeName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1],
-                isAlphanumeric: true
-            }
-        },
-        dob: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: sequelize.fn('NOW'),
-            validate: {
-                isDate: true
-            }
-        },
-        phone: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-            validate: {
-                validatePhone: function(value) {
-                    if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
-                        throw new Error('phone format error!')
-                    };
-                }
+                len: [1]
             }
         },
         email: {
@@ -43,18 +22,32 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
-        password: {
+        phone: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                validatePhone: function(value) {
+                    if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
+                        throw new Error('phone format error!')
+                    };
+                }
+            }
+        },
+        pickupOption: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: sequelize.false
+        },
+        deliveryOption: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: sequelize.false
         }
     }, {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                Customer.hasOne(models.Address);
-                Customer.hasOne(models.Bucket);
+                Store.hasMany(models.storeProduct)
             }
         }
     });
-    return Customer;
-};
+    return Store;
+}

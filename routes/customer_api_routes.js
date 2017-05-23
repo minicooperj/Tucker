@@ -17,7 +17,7 @@ module.exports = function(app) {
         customerORM.updateCustomerInfo(req.body, (customer) => {
             res.json(customer);
         })
-    })
+    });
 
     app.post('/customer/address', (req, res) => {
         customerORM.addCustomerAddress(req.body, (address) => {
@@ -35,6 +35,6 @@ module.exports = function(app) {
         customerORM.updateCustomerAddress(req.body, (address) => {
             res.json(address);
         })
-    })
+    });
 
 };
