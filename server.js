@@ -2,7 +2,12 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var passport = require('passport');
+var session = require('express-session');
 var bodyParser = require("body-parser");
+var env = require('dotenv').load();
+var exphbs = require('express-handlebars');
+var flash = require('connect-flash');
 
 // Sets up the Express App
 // =============================================================
@@ -19,13 +24,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Static directory
-app.use(express.static("./public"));
+// For Passport
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash());
+
+//For Handlebars
+app.set('views', './views');
+app.engine('hbs', exphbs({ extname: '.hbs' }));
+app.set('view engine', '.hbs');
+
+// // Static directory
+// app.use(express.static("./public"));
 
 // Routes =============================================================
-require("./routes/customer_api_routes.js")(app);
+
+//routes for signin/signup/signout
+require('./routes/customer_auth_routs.js')(app, passport);
+
+//html routes
+app.use("/", require('./routes/html_routes.js'));
+
+//customer routes
+// require("./routes/customer_api_routes.js")(app);
 
 //====================================================================
+
+//load passport strategies
+require('./config/passport/passport.js')(passport, db.Customer);
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: false }).then(function() {

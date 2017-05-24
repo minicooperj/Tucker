@@ -19,12 +19,31 @@ var customerORM = {
         });
     },
 
-    getCustomerAddress: (customerId, callback) => {
+    getCustomerByEmail: (email, callback) => {
         db.Customer.findOne({
             where: {
-                id: customerId
-            },
-            include: [db.Address]
+                email: email
+            }
+        }).then(function(dbCustomers) {
+            callback(dbCustomers);
+        });
+    },
+
+    getCustomerById: (id, callback) => {
+        db.Customer.findOne({
+            where: {
+                id: id
+            }
+        }).then(function(dbCustomers) {
+            callback(dbCustomers);
+        });
+    },
+
+    getCustomerAddress: (customerId, callback) => {
+        db.Address.findOne({
+            where: {
+                customerId: customerId
+            }
         }).then(function(dbAddress) {
             callback(dbAddress);
         });

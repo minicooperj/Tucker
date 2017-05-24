@@ -21,18 +21,18 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: sequelize.fn('NOW'),
             validate: {
-                isDate: true
+                // isDate: true
             }
         },
         phone: {
             type: DataTypes.STRING(20),
             allowNull: false,
             validate: {
-                validatePhone: function(value) {
-                    if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
-                        throw new Error('phone format error!')
-                    };
-                }
+                // validatePhone: function(value) {
+                //     if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
+                //         throw new Error('phone format error!');
+                //     }
+                // }
             }
         },
         email: {
@@ -40,12 +40,16 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
             validate: {
-                isEmail: true
+                isEmail: true,
+                len: [1]
             }
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [6]
+            }
         }
     }, {
         timestamps: false,
