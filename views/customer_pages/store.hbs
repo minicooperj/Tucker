@@ -20,13 +20,34 @@
   </div>
 </nav>
 
-{{#each}}
-<div class="card" style="width: 15rem;">
-  <img class="card-img-top" src="{{img}}" alt="Card image cap">
-  <div class="card-block">
-    <h4 class="card-title">Food Item</h4>
-    <p class="card-text">{{productName.description}} Some quick example on each food item</p>
-    <a href="#" class="btn btn-primary">Open bigger modal</a>
+
+<div class="columnContainer">
+  <div class="categoryColumn">
+    <script id="categoryColumntemplate" type="text/x-handlebars-template">
+      <ul>
+      {{#each productCategory}}
+      <li> <a class="nav-link" href="#" value="{{this}}"></a> </li>
+      {{/each}}
+    </ul>
+    </script>
   </div>
+
+  <div class="productGallery">
+  <script id="productCardTemplate" type="text/x-handlebars-template">
+  {{#if productCategory}}
+  {{#each Product}}
+  <div class="card" style="width: 15rem;">
+      <img class="card-img-top" src="{{img}}" alt="Card image cap">
+      <div class="card-block">
+        <h4 class="card-title">{{name}}Food Item</h4>
+        <h4 class="card-title">{{price}}Food Item</h4>
+        <p class="card-text">{{productName.description}} Some quick example on each food item</p>
+        <a href="#" class="btn btn-primary">Open bigger modal</a>
+      </div>
+  </div>
+  {{/each}}
+  {{/if}}
+  </script>
+  </div>
+
 </div>
-{{/each}}
