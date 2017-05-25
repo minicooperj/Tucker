@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Product = sequelize.define("Product", {
+    var ProductDescription = sequelize.define("Product", {
         productName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                Product.hasOne(models.storeProduct);
+                ProductDescription.hasOne(models.Product);
             }
         }
     });
