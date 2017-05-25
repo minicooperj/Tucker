@@ -13,7 +13,7 @@ Supermarket Users can register / log in to manage their product lists, push spec
 
 
 to start install all dependencies:
-    npm install
+    npm install  ,
 then start server:
     npm start
 
