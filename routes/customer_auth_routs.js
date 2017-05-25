@@ -11,9 +11,9 @@ module.exports = function(app, passport) {
 
     app.get('/customer/info', isLoggedIn, customerController.info);
 
-    app.get('customers', isLoggedIn, customerController.getCustomers);
+    app.get('/customers', isLoggedIn, customerController.getCustomers);
 
-    app.put('customer', isLoggedIn, customerController.updateCustomerInfo);
+    app.put('/customer', isLoggedIn, customerController.updateCustomerInfo);
 
     app.post('/customer/address', isLoggedIn, customerController.addAddress);
 

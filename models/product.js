@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var storeProduct = sequelize.define("storeProduct", {
+    var Product = sequelize.define("storeProduct", {
         price: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -31,10 +31,10 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                storeProduct.belongsTo(models.Product, {
+                Product.belongsTo(models.ProductDescription, {
                     foreignKey: { allowNull: false }
                 });
-                storeProduct.belongsTo(models.Product, {
+                Product.belongsTo(models.ProductDescription, {
                     foreignKey: { allowNull: false }
                 });
             }
