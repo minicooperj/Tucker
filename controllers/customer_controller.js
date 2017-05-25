@@ -15,29 +15,31 @@ exports.info = function(req, res) {
 };
 
 exports.index = function(req, res) {
+    console.log('Logined user', req.user);
     res.render('customer_pages/index');
 };
 
 exports.addAddress = function(req, res) {
-    customerORM.addCustomerAddress(req.body, (address) => {
+    customerORM.addCustomerAddress(req.body, req.user.id, (address) => {
         res.render('customer_pages/address', address);
     });
 };
 
 exports.getAddress = function(req, res) {
-    customerORM.getCustomerAddress(req.params.id, (address) => {
+    customerORM.getCustomerAddress(req.user.id, (address) => {
+        // res.json(address);
         res.render('customer_pages/address', address);
     });
 };
 
 exports.updateAddress = function(req, res) {
-    customerORM.getCustomerAddress(req.body, (address) => {
+    customerORM.getCustomerAddress(req.body, req.user.id, (address) => {
         res.render('customer_pages/address', address);
     });
 };
 
 exports.updateCustomerInfo = function(req, res) {
-    customerORM.updateCustomerInfo(req.body, (customer) => {
+    customerORM.updateCustomerInfo(req.body, req.user.id, (customer) => {
         res.render("customer_pages/info", customer);
     });
 };

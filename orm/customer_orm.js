@@ -2,11 +2,13 @@ var db = require('../models');
 
 var customerORM = {
     addCustomer: (customerData, callback) => {
+        customerData.role = "customer";
         db.Customer.create(customerData).then((newCustomer) => {
             callback(newCustomer);
         });
     },
-    addCustomerAddress: (newAddress, callback) => {
+    addCustomerAddress: (newAddress, customerId, callback) => {
+        newAddress.customerId = customerId;
         db.Address.create(newAddress).then((address) => {
             callback(address);
         })
@@ -58,7 +60,7 @@ var customerORM = {
             callback(bucket);
         });
     },
-    updateCustomerAddress: (newAddress, callback) => {
+    updateCustomerAddress: (newAddress, customerId, callback) => {
         db.Address.update(newAddress, {
             where: {
                 customerId: customerId
@@ -67,10 +69,10 @@ var customerORM = {
             callback(address);
         })
     },
-    updateCustomerInfo: (customerInfo, callback) => {
+    updateCustomerInfo: (customerInfo, customerId, callback) => {
         db.Customer.update(customerInfo, {
             where: {
-                id: customerInfo.id
+                id: customerId
             }
         }).then((customer) => {
             callback(customer);

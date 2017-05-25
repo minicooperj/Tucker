@@ -35,8 +35,8 @@ app.set('views', './views');
 app.engine('hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
-// // Static directory
-// app.use(express.static("./public"));
+// Static directory
+app.use(express.static("./public"));
 
 // Routes =============================================================
 

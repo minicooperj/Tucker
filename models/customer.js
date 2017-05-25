@@ -50,6 +50,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [6]
             }
+        },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         timestamps: false,
