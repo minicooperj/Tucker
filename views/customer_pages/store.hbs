@@ -1,3 +1,4 @@
+<!-- NAV BAR -->
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,22 +21,29 @@
   </div>
 </nav>
 
+<!-- Container for Category Column and Product Gallery -->
 
 <div class="columnContainer">
+
+<!-- Category Column -->
   <div class="categoryColumn">
     <script id="categoryColumntemplate" type="text/x-handlebars-template">
       <ul>
       {{#each productCategory}}
-      <li> <a class="nav-link" href="#" value="{{this}}"></a> </li>
+      <li><form action="/?_method=PUT" method="GET">
+          <a class="nav-link" href="#" value="{{this}}"></a>
+          </form>
+      </li>
       {{/each}}
     </ul>
     </script>
   </div>
 
+<!-- Product Gallery -->
   <div class="productGallery">
   <script id="productCardTemplate" type="text/x-handlebars-template">
-  {{#if productCategory}}
   {{#each Product}}
+  {{#if productCategory}}
   <div class="card" style="width: 15rem;">
       <img class="card-img-top" src="{{img}}" alt="Card image cap">
       <div class="card-block">
@@ -45,8 +53,8 @@
         <a href="#" class="btn btn-primary">Open bigger modal</a>
       </div>
   </div>
-  {{/each}}
   {{/if}}
+  {{/each}}
   </script>
   </div>
 
