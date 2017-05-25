@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                Store.hasMany(models.storeProduct)
+                Store.hasMany(models.Product);
             }
         }
     });

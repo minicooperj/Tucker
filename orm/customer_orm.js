@@ -83,17 +83,41 @@ var customerORM = {
             where: {
                 id: customerId
             }
-        }).then((customer) => {
-            callback(customer);
         });
         db.Address.destroy({
             where: {
                 customerId: customerId
             }
-        }).then((address) => {
-            callback(address);
         });
-    }
+    },
+    getCustomerBucket: (customerId, callback) => {
+        db.Bucket.findAll({
+            where: {
+                customerId: customerId
+            },
+            include: [db.Product]
+        }).then((bucket) => {
+            callback(bucket);
+        });
+    },
+
+    updateBucket: (customerId, productId, callback) => {
+        db.Bucket.destroy({
+            where: {
+                customerId: customerId,
+                id: productId
+            }
+        }).then(bucketProd => {
+            callback(bucketProd);
+        });
+    },
+
+    addToBucket: (customerId, productId, callback => {
+        var newInstanse = { customerId, productId };
+        db.bucket.create(newInstanse).then(bucket => {
+            callback(bucket);
+        });
+    })
 };
 
 module.exports = customerORM;

@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
                             allowNull: false
                         }
                     });
-                    Bucket.belongsTo(models.storeProduct, {
+                    Bucket.belongsTo(models.Product, {
                         foreignKey: {
                             allowNull: false
                         }

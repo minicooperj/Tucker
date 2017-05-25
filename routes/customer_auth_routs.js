@@ -21,6 +21,12 @@ module.exports = function(app, passport) {
 
     app.put('/customer/address', isLoggedIn, customerController.updateAddress);
 
+    app.get('/customer/bucket', isLoggedIn, customerController.getBucket);
+
+    app.delete('customer/bucket/:productId', isLoggedIn, customerController.updateBucker);
+
+    app.put('customer/bucket/:productId', isLoggedIn, customerController.addToBucket);
+
     app.post('/customer/signup', passport.authenticate('local-signup', {
         successRedirect: '/customer/index',
         failureRedirect: '/customer/signup',
