@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>Tucker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+      <link href="./assets/css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tucker</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Shop<a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sell</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <a class="nav-link" href="#">Login</a>
+        </form>
+      </div>
+    </nav>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="hover">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+
+      <!--  Wrapper for Slider-->
+      <!-- Shop Slide  -->
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="first-slide" src="./assets/img/Carousel-Shop.jpg" alt="First slide"></img>
+          <div class="container">
+            <div class="carousel-caption d-none d-md-block text-left">
+              <h1>Tucker. Shop local. Globally</h1>
+              <p>Wherever you are in the world, shop local with Tucker.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button" id="shop-modalbtn" data-toggle="modal" data-target="#shopSignup">Sign up</a></p>
+            </div>
+        </div>
+      </div>
+
+
+      <!-- Shop Sign-up Modal -->
+      <div class="modal fade bd-example-modal-lg" id="shopSignup" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          	<span aria-hidden="true">X</span>
+          	</button>
+          	<h4 class="modal-title" id="modalLabel">Shopper Sign-Up</h4>
+            <p>Sign up to find stores in your area and start shopping</p>
+          </div>
+
+      <!-- Inputs for Shop Sign-Up -->
+      <div class="modal-body">
+          <div class="container-fluid">
+          <div class="form-group row no-gutters">
+            <label for="shop-firstName-input" class="col-2 col-form-label input-group-addon">First Name</label>
+          <div class="col-9">
+            <input class="form-control" type="text" placeholder="Enter your first name" id="shop-firstName-input" autocomplete="on">
+          </div>
+          </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-lastName-input" class="col-2 col-form-label input-group-addon">Last Name</label>
+            <div class="col-9">
+              <input class="form-control" type="text" placeholder="Enter your last name" id="shop-lastName-input" autocomplete="on">
+            </div>
+            </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-emailAddress-input" class="col-2 col-form-label input-group-addon">E-Mail Address</label>
+            <div class="col-9">
+              <input class="form-control" type="text" placeholder="Enter your E-Mail Address" id="shop-emailAddress-input" autocomplete="on">
+            </div>
+            </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-passwordSet-input" class="col-2 col-form-label input-group-addon">Password</label>
+              <div class="col-9">
+                <input class="form-control" type="password" placeholder="Enter a password (Min. 8 characters)" id="shop-password-input" autocomplete="on">
+              </div>
+            </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-passwordConfirm-input" class="col-2 col-form-label input-group-addon">Password</label>
+              <div class="col-9">
+                <input class="form-control" type="password" placeholder="Reenter your new Password" id="shop-passwordConfirm-input" autocomplete="on">
+              </div>
+            </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-streetAddress-input" class="col-2 col-form-label input-group-addon">Street Address</label>
+            <div class="col-9">
+              <input class="form-control" type="text" placeholder="Enter your street address" id="shop-streetAddress-input" autocomplete="on">
+            </div>
+            </div>
+
+            <div class="form-group row no-gutters">
+              <label for="shop-zipCode-input" class="col-2 col-form-label input-group-addon">Zip Code</label>
+            <div class="col-9">
+              <input class="form-control" type="number" placeholder="Enter your Zip Code" id="shop-zipCode-input" autocomplete="on">
+            </div>
+            </div>
+
+          <!-- Close modal body div -->
+      </div>
+
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" id="shopSignupSubmit" class="btn btn-secondary">Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+        <!--Close Shop signup modal  -->
+
+
+        <!-- Sell Slide -->
+        <div class="carousel-item">
+          <img class="second-slide" src="./assets/img/Carousel-Shop.jpg" alt="Second slide"></img>
+          <div class="container">
+            <div class="carousel-caption d-none d-md-block text-right">
+              <h1>Tucker. Feed Your Community</h1>
+              <p>The Tucker platform helps you serve your communities and feed the growth of your business.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button" id="sell-modalbtn" data-toggle="modal" data-target="#sellSignup">Sign up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <!-- Sell Sign-up Modal -->
+    <div class="modal fade bd-example-modal-lg" id="sellSignup" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+          </button>
+          <h4 class="modal-title" id="modalLabel">Seller Sign-Up</h4>
+          <p>Sign up and start selling your products online</p>
+        </div>
+
+    <!-- Inputs for Sell Sign-Up -->
+    <div class="modal-body">
+        <div class="container-fluid">
+          <div class="form-group row no-gutters">
+            <label for="sell-storeName-input" class="col-2 col-form-label input-group-addon">Store Name</label>
+          <div class="col-9">
+            <input class="form-control" type="text" placeholder="Enter the name of your store" id="sell-storeName-input" autocomplete="on">
+          </div>
+          </div>
+
+        <div class="form-group row no-gutters">
+          <label for="sell-firstName-input" class="col-2 col-form-label input-group-addon">First Name</label>
+        <div class="col-9">
+          <input class="form-control" type="text" placeholder="Enter your first name" id="sell-firstName-input" autocomplete="on">
+        </div>
+        </div>
+
+        <div class="form-group row no-gutters">
+            <label for="sell-lastName-input" class="col-2 col-form-label input-group-addon">Last Name</label>
+          <div class="col-9">
+            <input class="form-control" type="text" placeholder="Enter your last name" id="sell-lastName-input" autocomplete="on">
+          </div>
+          </div>
+
+          <div class="form-group row no-gutters">
+            <label for="sell-emailAddress-input" class="col-2 col-form-label input-group-addon">E-Mail Address</label>
+          <div class="col-9">
+            <input class="form-control" type="text" placeholder="Enter your E-Mail Address" id="sell-emailAddress-input" autocomplete="on">
+          </div>
+          </div>
+
+          <div class="form-group row no-gutters">
+            <label for="sell-passwordSet-input" class="col-2 col-form-label input-group-addon">Password</label>
+            <div class="col-9">
+              <input class="form-control" type="password" placeholder="Enter a password (Min. 8 characters)" id="sell-password-input" autocomplete="on">
+            </div>
+          </div>
+
+          <div class="form-group row no-gutters">
+            <label for="sell-passwordConfirm-input" class="col-2 col-form-label input-group-addon">Password</label>
+            <div class="col-9">
+              <input class="form-control" type="password" placeholder="Reenter your new Password" id="sell-passwordConfirm-input" autocomplete="on">
+            </div>
+          </div>
+
+          <div class="form-group row no-gutters">
+            <label for="sell-streetAddress-input" class="col-2 col-form-label input-group-addon">Street Address</label>
+          <div class="col-9">
+            <input class="form-control" type="text" placeholder="Enter your store address" id="sell-streetAddress-input" autocomplete="on">
+          </div>
+          </div>
+
+          <div class="form-group row no-gutters">
+            <label for="sell-zipCode-input" class="col-2 col-form-label input-group-addon">Zip Code</label>
+          <div class="col-9">
+            <input class="form-control" type="number" placeholder="Enter your Zip Code" id="sell-zipCode-input" autocomplete="on">
+          </div>
+          </div>
+
+        <!-- Close modal body div -->
+    </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="sellSignupSubmit" class="btn btn-secondary">Register</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+      <!--Close Sell signup modal  -->
+
+    <!-- ================================================== -->
+    <!-- Marketing messaging and featurettes -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-6">
+          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Shop.</h2>
+          <p>Find stores in your area that use Tucker. Browse and buy online. Have your orders waiting when you arrive.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Sell.</h2>
+          <p>Expand your business presence online. Get customer orders early and often.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 push-md-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 pull-md-7">
+          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!-- <script src="../../assets/js/vendor/holder.min.js"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
