@@ -12,6 +12,12 @@ Customers can log in / register for an account with which they can interact with
 Supermarket Users can register / log in to manage their product lists, push specials / coupons notifications, see customer requests / orders. 
 
 
+to start install all dependencies:
+    npm install
+then start server:
+    npm start
+
+
 
 
 
