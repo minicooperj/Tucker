@@ -31,12 +31,13 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
 //For Handlebars
+app.use(express.static(process.cwd() + '/public'));
 app.set('views', './views');
-app.engine('hbs', exphbs({ extname: '.hbs' }));
-app.set('view engine', '.hbs');
+app.engine('handlebars', exphbs({ defaultLayout: "main" }));
+app.set('view engine', 'handlebars');
 
 // Static directory
-app.use(express.static("./public"));
+// app.use(express.static("./public"));
 
 // Routes =============================================================
 
