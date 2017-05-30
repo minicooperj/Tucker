@@ -112,12 +112,12 @@ var customerORM = {
         });
     },
 
-    addToBucket: (customerId, productId, callback => {
+    addToBucket: (customerId, productId, callback) => {
         var newInstanse = { customerId, productId };
-        db.bucket.create(newInstanse).then(bucket => {
+        db.bucket.create(newInstanse).then((bucket) => {
             callback(bucket);
         });
-    })
+    }
 };
 
 module.exports = customerORM;

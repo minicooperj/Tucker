@@ -4,7 +4,7 @@ var router = express.Router();
 
 //home page route
 router.get('/', function(req, res) {
-    res.send('Welcome to tucker app');
+    res.render("index");
 });
 
 // Export routes for server.js to use.
