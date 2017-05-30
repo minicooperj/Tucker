@@ -5,11 +5,9 @@ module.exports = function(app, passport) {
 
     app.get('/customer/signin', customerController.signin);
 
-    app.get('/customer/index', isLoggedIn, customerController.index);
-
     app.get('/customer/logout', customerController.logout);
 
-    app.get('/customer/info', isLoggedIn, customerController.info);
+    app.get('/customer/index', isLoggedIn, customerController.indexPage);
 
     app.get('/customers', isLoggedIn, customerController.getCustomers);
 
@@ -27,13 +25,13 @@ module.exports = function(app, passport) {
 
     app.put('customer/bucket/:productId', isLoggedIn, customerController.addToBucket);
 
-    app.post('/customer/signup', passport.authenticate('local-signup', {
+    app.post('/customer/signup', passport.authenticate('customer-signup', {
         successRedirect: '/customer/index',
         failureRedirect: '/customer/signup',
         failureFlash: true
     }));
 
-    app.post('/customer/signin', passport.authenticate('local-signin', {
+    app.post('/customer/signin', passport.authenticate('customer-signin', {
         successRedirect: '/customer/index',
         failureRedirect: '/customer/signin',
         failureFlash: 'Invalid username or password.'

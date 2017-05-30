@@ -16,7 +16,6 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
-var customerORM = require("./orm/customer_orm.js");
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -41,22 +40,24 @@ app.set('view engine', 'handlebars');
 
 // Routes =============================================================
 
-//routes for signin/signup/signout
-require('./routes/customer_auth_routs.js')(app, passport);
+//routes for customer signin/signup/signout
+require('./routes/customer_auth_routes.js')(app, passport);
+
+//routes for store signin/signup/signout
+require('./routes/store_auth_routes.js')(app, passport);
 
 //html routes
 app.use("/", require('./routes/html_routes.js'));
 
-//customer routes
-// require("./routes/customer_api_routes.js")(app);
-
 //====================================================================
 
 //load passport strategies
-require('./config/passport/passport.js')(passport, db.Customer);
+// require('./config/passport/customer_passport.js')(passport, db.Customer);
+// require('./config/passport/store_passport.js')(passport, db.Store);
+require('./config/passport/passport.js')(passport);
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });

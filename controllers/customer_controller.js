@@ -16,11 +16,7 @@ exports.logout = function(req, res) {
     });
 };
 
-exports.info = function(req, res) {
-    res.render('customer_pages/info');
-};
-
-exports.index = function(req, res) {
+exports.indexPage = function(req, res) {
     console.log('Logined user', req.user);
     res.render('customer_pages/index');
 };

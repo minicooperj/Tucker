@@ -3,16 +3,19 @@ var db = require('../models');
 
 var storeORM = {
     addStore: (storeData, callback) => {
+        storeData.role = "store";
         db.Store.create(storeData).then((newStore) => {
             callback(newStore);
         });
     },
-    addStoreAddress: (newAddress, callback) => {
+    addStoreAddress: (newAddress, storeId, callback) => {
+        newAddress.storeId = storeId;
         db.Address.create(newAddress).then((address) => {
             callback(address);
-        })
+        });
     },
-    getStores: (callback) => {
+
+    getStores: (storeId, callback) => {
         db.Store.findAll({
             include: [db.Address]
         }).then(function(dbStores) {
@@ -20,8 +23,39 @@ var storeORM = {
         });
     },
 
+    getStoreByEmail: (email, callback) => {
+        db.Store.findOne({
+            where: {
+                email: email
+            }
+        }).then(function(store) {
+            callback(store);
+        });
+    },
+
+    getStoreById: (id, callback) => {
+        db.Store.findOne({
+            where: {
+                id: id
+            }
+        }).then(function(store) {
+            callback(store);
+        });
+    },
+
+    getStoreInfo: (storeId, callback) => {
+        db.Store.findAll({
+            where: {
+                id: storeId
+            },
+            include: [db.Address]
+        }).then(function(dbStores) {
+            callback(dbStores);
+        });
+    },
+
     getStoreAddress: (storeId, callback) => {
-        db.Address.findone({
+        db.Address.findOne({
             where: {
                 storeId: storeId
             }
@@ -29,15 +63,16 @@ var storeORM = {
             callback(dbAddress);
         });
     },
-    updateStoreAddress: (newAddress, callback) => {
+    updateStoreAddress: (newAddress, storeId, callback) => {
         db.Address.update(newAddress, {
             where: {
                 storeId: storeId
             }
         }).then((address) => {
             callback(address);
-        })
+        });
     },
+
     updateStoreInfo: (storeInfo, callback) => {
         db.Store.update(storeInfo, {
             where: {
@@ -45,8 +80,9 @@ var storeORM = {
             }
         }).then((store) => {
             callback(store);
-        })
+        });
     },
+
     deleteStore: (storeId, callback) => {
         db.Store.destroy({
             where: {
@@ -58,33 +94,41 @@ var storeORM = {
                 storeId: storeId
             }
         });
+        db.ProductDescription.destroy({
+            where: {
+                storeId: storeId
+            }
+        });
     },
-    addProduct: (storeId, productData, callback) => {
-        storeProduct.storeId = storeId;
-        db.storeProduct.create(productData).then((newProduct) => {
+
+    addProduct: (productData, storeId, callback) => {
+        productData.storeId = storeId;
+        db.ProductDescription.create(productData).then((newProduct) => {
             callback(newProduct);
         });
     },
+
     updateProductInfo: (newProductinfo, callback) => {
-        db.storeProduct.update(newProductinfo, {
-            where: {
-                productId: productId
-            }
-        }).then((productData) => {
+        db.ProductDescription.update(newProductinfo).then((product) => {
             callback(product);
-        })
+        });
     },
-    getProducts: (callback) => {
-        db.Product.findAll({
+
+    getProducts: (storeId, callback) => {
+        db.ProductDescription.findAll({
+            where: {
+                storeId: store
+            },
             include: [db.Product]
         }).then(function(dbProduct) {
             callback(dbProduct);
         });
     },
+
     deleteProduct: (productId, callback) => {
-        db.storeProduct.destroy({
+        db.ProductDescription.destroy({
             where: {
-                productId: productId
+                id: productId
             }
         }).then((product) => {
             callback(product);

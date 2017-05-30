@@ -11,7 +11,7 @@ var customerORM = {
         newAddress.customerId = customerId;
         db.Address.create(newAddress).then((address) => {
             callback(address);
-        })
+        });
     },
     getCustomers: (callback) => {
         db.Customer.findAll({
@@ -26,8 +26,8 @@ var customerORM = {
             where: {
                 email: email
             }
-        }).then(function(dbCustomers) {
-            callback(dbCustomers);
+        }).then(function(customer) {
+            callback(customer);
         });
     },
 
@@ -67,7 +67,7 @@ var customerORM = {
             }
         }).then((address) => {
             callback(address);
-        })
+        });
     },
     updateCustomerInfo: (customerInfo, customerId, callback) => {
         db.Customer.update(customerInfo, {

@@ -22,15 +22,19 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                validatePhone: function(value) {
-                    if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
-                        throw new Error('phone format error!')
-                    };
-                }
+                // validatePhone: function(value) {
+                //     if (!/^(13|14|15|17|18)\d{9}$/i.test(value) && !/^((\(\d{2,3}\))|(\d{3}\-)|(\d{3}))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(value)) {
+                //         throw new Error('phone format error!')
+                //     };
+                // }
             }
         },
         pickupOption: {
@@ -40,6 +44,10 @@ module.exports = function(sequelize, DataTypes) {
         deliveryOption: {
             type: DataTypes.BOOLEAN,
             defaultValue: sequelize.false
+        },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         timestamps: false,
