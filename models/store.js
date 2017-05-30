@@ -46,6 +46,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 Store.hasMany(models.Product);
+                Store.hasOne(models.Address);
             }
         }
     });

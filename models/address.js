@@ -39,6 +39,11 @@ module.exports = function(sequelize, DataTypes) {
                         allowNull: false
                     }
                 });
+                Address.belongsTo(models.Store, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
             }
         }
     });
