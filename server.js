@@ -35,9 +35,6 @@ app.set('views', './views');
 app.engine('handlebars', exphbs({ defaultLayout: "main" }));
 app.set('view engine', 'handlebars');
 
-// Static directory
-// app.use(express.static("./public"));
-
 // Routes =============================================================
 
 //routes for customer signin/signup/signout
@@ -52,12 +49,10 @@ app.use("/", require('./routes/html_routes.js'));
 //====================================================================
 
 //load passport strategies
-// require('./config/passport/customer_passport.js')(passport, db.Customer);
-// require('./config/passport/store_passport.js')(passport, db.Store);
 require('./config/passport/passport.js')(passport);
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });

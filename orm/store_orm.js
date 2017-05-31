@@ -94,7 +94,7 @@ var storeORM = {
                 storeId: storeId
             }
         });
-        db.ProductDescription.destroy({
+        db.Product.destroy({
             where: {
                 storeId: storeId
             }
@@ -103,30 +103,30 @@ var storeORM = {
 
     addProduct: (productData, storeId, callback) => {
         productData.storeId = storeId;
-        db.ProductDescription.create(productData).then((newProduct) => {
+        db.Product.create(productData).then((newProduct) => {
             callback(newProduct);
         });
     },
 
     updateProductInfo: (newProductinfo, callback) => {
-        db.ProductDescription.update(newProductinfo).then((product) => {
+        db.Product.update(newProductinfo).then((product) => {
             callback(product);
         });
     },
 
     getProducts: (storeId, callback) => {
-        db.ProductDescription.findAll({
+        db.Product.findAll({
             where: {
-                storeId: store
+                storeId: storeId
             },
-            include: [db.Product]
+            include: [db.ProductDescription]
         }).then(function(dbProduct) {
             callback(dbProduct);
         });
     },
 
     deleteProduct: (productId, callback) => {
-        db.ProductDescription.destroy({
+        db.Product.destroy({
             where: {
                 id: productId
             }

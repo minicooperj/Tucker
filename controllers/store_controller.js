@@ -18,7 +18,9 @@ exports.logout = function(req, res) {
 
 exports.indexPage = function(req, res) {
     console.log('Logined user', req.user);
-    res.render('store_pages/index');
+    storeORM.getStoreInfo(req.user.id, store => {
+        res.render("store_pages/storePortal", { "store": store });
+    });
 };
 
 exports.addAddress = function(req, res) {
@@ -72,7 +74,8 @@ exports.updateProductInfo = function(req, res) {
 
 exports.getProducts = function(req, res) {
     storeORM.getProducts(req.user.id, products => {
-        res.render("store_pages/product", products);
+        // res.json(products);
+        res.render("store_pages/manageProducts", { "products": products });
     });
 };
 

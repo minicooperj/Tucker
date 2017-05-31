@@ -1,9 +1,9 @@
 var storeController = require('../controllers/store_controller.js');
 
 module.exports = function(app, passport) {
-    app.get('/store/signup', storeController.signup);
+    app.get('/store/register', storeController.signup);
 
-    app.get('/store/signin', storeController.signin);
+    app.get('/store/login', storeController.signin);
 
     app.get('/store/logout', storeController.logout);
 
@@ -29,15 +29,15 @@ module.exports = function(app, passport) {
 
     app.delete('/store/product', isLoggedIn, storeController.deleteProduct);
 
-    app.post('/store/signup', passport.authenticate('store-signup', {
+    app.post('/store/register', passport.authenticate('store-signup', {
         successRedirect: '/store/index',
-        failureRedirect: '/store/signup',
+        failureRedirect: '/store/register',
         failureFlash: true
     }));
 
-    app.post('/store/signin', passport.authenticate('store-signin', {
+    app.post('/store/login', passport.authenticate('store-signin', {
         successRedirect: '/store/index',
-        failureRedirect: '/store/signin',
+        failureRedirect: '/store/login',
         failureFlash: 'Invalid username or password.'
     }));
 
