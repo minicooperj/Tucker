@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>Tucker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tucker</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Shop<a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sell</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <a class="nav-link" href="#">Login</a>
+        </form>
+      </div>
+    </nav>
+
+<!-- Container for Store Options  -->
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Manage Orders</h1>
+    <p class="lead">View and process your customers' online orders</p>
+  </div>
+
+  <div id="orderCardDiv" class="container">
+    <div id="orderCard" class="card pick-up" style="width: 20rem;">
+      <div class="card-block">
+      <h4 class="card-title">Customer Name</h4>
+      <p class="card-text">Customer Pick-Up Time:</p>
+      <p>{{this.orderPickupTime}}</p>
+      <a href="#" class="btn btn-primary">Go to Order Details</a>
+      <a href="#" class="btn btn-primary">Mark as Complete</a>
+      </div>
+    </div>
+
+    <div id="orderCard" class="card delivery" style="width: 20rem;">
+      <div class="card-block">
+      <h4 class="card-title">Customer Name</h4>
+      <p class="card-text">Customer Delivery Time</p>
+      <p>{{this.orderDeliveryTime}}</p>
+      <a href="#" class="btn btn-primary">Go to Order Details</a>
+      <a href="#" class="btn btn-primary">Mark as Complete</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+      <hr>
+      <h3>No more orders!</h3>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </div>
+  </footer>
+
+</body>

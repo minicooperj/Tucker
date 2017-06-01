@@ -83,7 +83,7 @@
                   </input>
             </td>
               <td>{{product.discountedPrice}}</td>
-              <td><button type="button" class="btn btn-secondary btn-sm">View</button></td>
+              <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="itemDescription[i]-modal">View</button></td>
               <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="item[i]-modal">Edit Row</button></td>
             </tr>
           </tbody>
@@ -93,7 +93,7 @@
 
 <!-- Modal for view / edit  -->
 
-<div id="item[i]-model" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="item[i]-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="container text-center">
@@ -117,7 +117,7 @@
               <input class="form-check-input" type="checkbox" value="{{product.discounted}}">
               </label>
               </input>
-              <h6>Discout Price</h6>
+              <h6>Discount Price</h6>
                 <input class="form-control" type="number" value="{{product.discountPrice}}" id="editDiscountPrice">
             </div>
             <div class="col text-center">
@@ -135,6 +135,34 @@
     </div>
   </div>
 </div>
+
+
+<!-- View Item Description Modal -->
+<div id="itemDescription[i]-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container text-center">
+        <hr>
+        <h3>View Item Description</h3>
+        <hr>
+        <form action="/{{this.id}}?_method=POST" method="POST">
+        <div class="row">
+            <div class="col text-center">
+              <h6>Product Description</h6>
+                <input class="form-control" type="text" value="{{product.Description}}" id="editProductDescription">
+            </div>
+        </div>
+          <hr>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#item[i]-modal" data-dismiss="modal" type="submit">Edit</button>
+          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
     <!-- FOOTER -->
