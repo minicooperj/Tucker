@@ -50,7 +50,7 @@
 
   <div class="container">
 <!-- Products Table -->
-      <table class="table table-hover table-sm table-responsive">
+      <table class="table table-hover table-sm table-responsive table-bordered">
           <thead class="thead-default">
             <tr>
                 <th>#</th>
@@ -62,25 +62,79 @@
                 <th>Discounted (Boolean)</th>
                 <th>Discounted Price</th>
                 <th>Product Description</th>
+                <th>Edit Row</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td><input class="form-check-input" type="checkbox" value="{{itemcarried}}"></td>
+              <th scope="row">1 {{index}}</th>
+              <td><label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="{{itemcarried}}" disabled>
+                  </label>
+                  </input>
+              </td>
               <td>{{product.name}}</td>
               <td>{{product.id}}</td>
               <td>{{product.price}}</td>
               <td>{{product.inStock}}</td>
-              <td>{{product.discounted}}</td>
+              <td><label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="{{product.discounted}}" disabled>
+                  </label>
+                  </input>
+            </td>
               <td>{{product.discountedPrice}}</td>
-              <td><button type="button" class="btn btn-secondary btn-sm">View / Edit</button></td>
+              <td><button type="button" class="btn btn-secondary btn-sm">View</button></td>
+              <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="item[i]-modal">Edit Row</button></td>
             </tr>
           </tbody>
       </table>
     </div>
 </div>
 
+<!-- Modal for view / edit  -->
+
+<div id="item[i]-model" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container text-center">
+        <hr>
+        <h3>Edit Item Details</h3>
+        <hr>
+        <form action="/{{this.id}}?_method=POST" method="POST">
+        <div class="row">
+            <div class="col text-center">
+              <h6>Carried</h6>
+                  <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="{{itemcarried}}">
+                  </label>
+                  </input>
+              <h6>Price</h6>
+                <input class="form-control" type="number" value="{{product.price}}" id="editProductPrice">
+              <h6>In Stock</h6>
+                  <input class="form-control" type="number" value="{{product.inStock}}" id="editInStock">
+              <h6>Discounted</h6>
+              <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value="{{product.discounted}}">
+              </label>
+              </input>
+              <h6>Discout Price</h6>
+                <input class="form-control" type="number" value="{{product.discountPrice}}" id="editDiscountPrice">
+            </div>
+            <div class="col text-center">
+              <h6>Product Description</h6>
+                <input class="form-control" type="text" value="{{product.Description}}" id="editProductDescription">
+
+            </div>
+        </div>
+          <hr>
+          <button class="btn btn-primary" data-toggle="modal" data-dismiss="modal" type="submit">Save New Details</button>
+          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <!-- FOOTER -->
