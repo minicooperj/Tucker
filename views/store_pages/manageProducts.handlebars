@@ -34,29 +34,25 @@
       <table class="table table-hover table-sm table-responsive">
           <thead class="thead-default">
             <tr>
-                <th>#</th>
-                <th>Carried (Boolean)</th>
-                <th>Product Name</th>
                 <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
                 <th>Price</th>
                 <th>In Stock</th>
                 <th>Discounted (Boolean)</th>
                 <th>Discounted Price</th>
-                <th>Product Description</th>
             </tr>
           </thead>
           <tbody>
             {{#each products}}
                 <tr>
-                    <th scope="row">1</th>
-                    <td><input class="form-check-input" type="checkbox" value="{{itemcarried}}"></td>
-                    <td>{{this.ProductDescription.productName}}</td>
                     <td>{{this.id}}</td>
-                    <td>{{this.price}}</td>
+                    <td>{{this.ProductDescription.productName}}</td>
+                    <td>{{this.ProductDescription.description}}</td>
+                    <td>{{this.price}} $</td>
                     <td>{{this.inStock}}</td>
                     <td>{{this.discounted}}</td>
                     <td>{{this.discountedPrice}}</td>
-                    <td>{{this.ProductDescription.description}}</td>
                     <td><button type="button" class="btn btn-secondary btn-sm">View / Edit</button></td>
                 </tr>
             {{/each}}

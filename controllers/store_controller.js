@@ -19,6 +19,7 @@ exports.logout = function(req, res) {
 exports.indexPage = function(req, res) {
     console.log('Logined user', req.user);
     storeORM.getStoreInfo(req.user.id, store => {
+        // res.json(store);
         res.render("store_pages/storePortal", { "store": store });
     });
 };
