@@ -50,13 +50,39 @@
     <hr>
   </div>
 
-  <div id="orderCardDiv" class="container">
+  <div id="orderCardDiv" class="card-deck">
     <div id="orderCard" class="card text-center pick-up" style="width: 20rem;">
       <div class="card-block">
       <h4 class="card-title">John Henry</h4>
       <hr>
       <p class="card-text">Customer Pick-Up Time:</p>
       <p>{{this.orderPickupTime}}</p>
+      <hr>
+      <a href="#"><button class="btn btn-primary">Go to Order Details</button></a>
+      <hr>
+      <button class="btn btn-primary">Mark as Complete</button>
+      </div>
+    </div>
+
+    <div id="orderCard" class="card text-center pick-up" style="width: 20rem;">
+      <div class="card-block">
+      <h4 class="card-title">Kevin Carmichael</h4>
+      <hr>
+      <p class="card-text">Customer Pick-Up Time:</p>
+      <p>{{this.orderPickupTime}}</p>
+      <hr>
+      <a href="#"><button class="btn btn-primary">Go to Order Details</button></a>
+      <hr>
+      <button class="btn btn-primary">Mark as Complete</button>
+      </div>
+    </div>
+
+    <div id="orderCard" class="card text-center delivery" style="width: 20rem;">
+      <div class="card-block">
+      <h4 class="card-title">Freddy Nichols</h4>
+      <hr>
+      <p class="card-text">Customer Delivery Time</p>
+      <p>{{this.orderDeliveryTime}}</p>
       <hr>
       <a href="#" class="btn btn-primary">Go to Order Details</a>
       <hr>
@@ -66,7 +92,7 @@
 
     <div id="orderCard" class="card text-center delivery" style="width: 20rem;">
       <div class="card-block">
-      <h4 class="card-title">Freddy Nichols</h4>
+      <h4 class="card-title">Nicole Piazza</h4>
       <hr>
       <p class="card-text">Customer Delivery Time</p>
       <p>{{this.orderDeliveryTime}}</p>
