@@ -6,6 +6,7 @@ The Tucker platform is THE tool for small grocery stores to connect with their l
 
 
 The Story:
+
 For the about 60.000 independent grocery and specialty food stores in the U.S., it's getting harder to compete in marketplace against traditional grocery store chains, not to mention the emergence and rise of online retailers like Jet and Amazon in the grocery space.
 
 Many of these grocery stores cater to their local clients' tastes and preferences, and can deliver a better customer experience than a national chain that serves a wider audience. 
