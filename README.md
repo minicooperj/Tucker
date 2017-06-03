@@ -4,6 +4,7 @@ Welcome to Tucker!
 
 The Tucker platform is THE tool for small grocery stores to connect with their local customers in the online marketplace. Customers can find stores in their neighborhood, keep up to date with current specials and offerings, and even place orders for pick-up and delivery.
 
+<hr>
 
 
 The Story:
@@ -18,7 +19,7 @@ For their customers, they'll now be able to shop locally any time of day and fro
 
 In urban areas, where customers may not have cars to haul bags and bags of groceries, or for the elderly or disabled, offering delivery for these customers will allow them to buy more than they can carry home, increasing store sales and saving multiple trips.
 
-
+<hr>
 
 Features:
 
@@ -42,6 +43,7 @@ Store-Side:
     Customer Tracking: Use Customer data to gather insights on customer preferences and improve offerings
     
 
+<hr>
 
 How we did it:
 
@@ -60,7 +62,7 @@ Where we're going in 2017:
     Add multi-language capability for spanish-speaking community
 
 
-
+<hr>
 Tech Notes:
 
 to start install all dependencies:
