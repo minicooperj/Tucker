@@ -73,10 +73,12 @@ var storeORM = {
         });
     },
 
-    updateStoreInfo: (storeInfo, callback) => {
+    updateStoreInfo: (storeInfo, storeId, callback) => {
+        console.log('new data:', storeInfo);
+        console.log('store Id: ', storeId);
         db.Store.update(storeInfo, {
             where: {
-                id: storeInfo.id
+                id: storeId
             }
         }).then((store) => {
             callback(store);
@@ -133,7 +135,8 @@ var storeORM = {
         }).then((product) => {
             callback(product);
         });
-    }
+    },
+    getAnonProducts: (callback) => { db.Product.findAll({ include: [db.ProductDescription] }).then(function(dbProduct) { callback(dbProduct); }); },
 
 };
 

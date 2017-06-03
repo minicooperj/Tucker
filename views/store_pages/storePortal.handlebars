@@ -1,144 +1,195 @@
-
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Tucker</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+    <a class="navbar-brand" href="#">Tucker</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Shop<a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sell</a>
-          </li>
+            <li class="nav-item active">
+
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-          <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="/store/logout">Logout</a>
         </form>
-      </div>
-    </nav>
+    </div>
+</nav>
 
 <!-- Container for Store Options  -->
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Manage your Store here</h1>
-    <p class="lead">Use this Portal to manage your store. Add items to your store, view and process your orders, and set up and update your special offers!</p>
-  </div>
-  <div class="container">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#storeInfoModal">Manage Info</button>
-    <a href="/store/product"><button class="btn btn-primary">Manage Products</button></a>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#storeOrdersModal">Manage Orders</button>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#storeSpecialsModal">Manage Specials</button>
-  </div>
+    <div class="container">
+        <h1 class="display-3">Manage your Store here</h1>
+        <p class="lead">Use this Portal to manage your store. Add items to your store, view and process your orders, and set up and update your special offers!</p>
+    </div>
+    <div class="container">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#storeInfoModal">Manage Info</button>
+        <a href="/store/product"><button class="btn btn-primary">Manage Products</button></a>
+        <a href="/store/orders"><button class="btn btn-primary">Manage Orders</button></a>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#storeSpecialsModal">Manage Specials</button>
+    </div>
 </div>
 
 <!-- Modal for Info -->
 <div class="modal fade bd-example-modal-lg" id="storeInfoModal" tabindex="-1" role="dialog" aria-labelledby="storeInfoModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="container text-center">
-        <hr>
-        <h3>Tucker</h3>
-        <hr>
-        <div class="row">
-          <div class="col text-center">
-            {{#each store}}
-          <h6>Store Name</h6>
-            <p>{{this.storeName}}</p>
-          <h6>Address</h6>
-            <p>Store Address</p>
-          <h6>Website</h6>
-              <p>{{this.website}}</p>
-          <h6>Allow Pickup</h6>
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="{{pickupOption.type}}" disabled>
-                Allow Customers to place orders for pickup
-              </label>
-              {{/each}}
-          </div>
-          <div class="col text-center">
-            {{#each store}}
-            <h6>Email</h6>
-              <p>{{this.email}}</p>
-            <h6>Prone</h6>
-              <p>{{this.phone}}</p>
-            <h6>Allow Delivery</h6>
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="{{deliveryOption.type}}" disabled>
-                Allow Customers to place orders for delivery
-                </label>
-                {{/each}}
-          </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="container">
+                <hr>
+                <h2>Tucker</h3>
+                <hr>
+                <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="text-center">Info:</h3>
+                            {{#each store}}
+                                <h5>Store Name:</h5>
+                                <p>{{this.storeName}}</p>
+                                <h5>Website:</h5>
+                                <p>{{this.website}}</p>
+                                <h5>Email:</h5>
+                                <p>{{this.email}}</p>
+                                <h5>Prone:</h5>
+                                <p>{{this.phone}}</p>
+                                <h5>Allow Pickup:</h5>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="{{pickupOption.type}}" disabled>
+                                    Allow Customers to place orders for pickup
+                                </label> 
+                                <h5>Allow Delivery:</h5>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="{{deliveryOption.type}}" disabled>
+                                    Allow Customers to place orders for delivery
+                                </label> 
+                            {{/each}}
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3 class="text-center">Address:</h3>
+                            {{#each store}}
+                                <h5>Address:</h5>
+                                <p>{{this.Address.street}}</p>
+                                <h5>City:</h5>
+                                <p>{{this.Address.city}}</p>
+                                <h5>State:</h5>
+                                <p>{{this.Address.state}}</p>
+                                <h5>Zip Code:</h5>
+                                <p>{{this.Address.zip_code}}</p>
+                            {{/each}}
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                    <hr>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStoreInfoModal" data-dismiss="modal">Update Info</button>
+                    <hr>
+                    </div>
+                    <div class="col-md-6">
+                    <hr>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editStoreAddressModal" data-dismiss="modal">Update Address</button>
+                    <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                        <hr>
+                    </div>
+                </div>
+            </div>
         </div>
-          <hr>
-          <button class="btn btn-primary" data-toggle="modal" data-target="#editStoreInfoModal" data-dismiss="modal">Edit Details</button>
-          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-          <hr>
-      </div>
-    </div> <!-- Close Modal content  -->
-  </div>
+        <!-- Close Modal content  -->
+    </div>
 </div>
 
 <!-- Modal for Edit Info -->
-<div class="modal fade bd-example-modal-lg" id="editStoreInfoModal" tabindex="-1" role="dialog" aria-labelledby="storeInfoModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="container text-center">
-        <hr>
-        <h3>Tucker</h3>
-        <hr>
-        <form>
-        <div class="row">
-            <div class="col text-center">
-              {{#each store}}
-                <h6>Store Name</h6>
-                  <input class="form-control" type="text" value="{{this.storeName}}" id="storeNameInput">
-                <h6>Address</h6>
-                    <input class="form-control" type="text" value="{{this.address}}" id="storeWebsiteInput">
-                <h6>Website</h6>
-                    <input class="form-control" type="text" value="{{this.website}}" id="storeWebsiteInput">
-                <h6>Allow Pickup</h6>
-                  <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="{{pickupOption.type}}">
-                  Allow Customers to place orders for pickup
-                  </label>
-                {{/each}}
-            </div>
-            <div class="col text-center">
-              {{#each store}}
-                <h6>Phone</h6>
-                  <input class="form-control" type="tel" value="{{this.phone}}" id="storePhone">
-                <h6>Email</h6>
-                  <input class="form-control" type="tel" value="{{this.email}}" id="storePhone">
-                <h6>Allow Delivery</h6>
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="{{deliveryOption.type}}">
-                Allow Customers to place orders for delivery
-                </label>
-              {{/each}}
+<div class="modal fade bd-example-modal-sm" id="editStoreInfoModal" tabindex="-1" role="dialog" aria-labelledby="storeInfoModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="container text-center">
+                <hr>
+                <h3>Tucker</h3>
+                <hr>
+                 <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Store Info:</h3>
+                            <form method="POST" action="/store/info?_method=PUT">
+                                {{#each store}}
+                                    <h5>Store Name:</h5>
+                                <input class="form-control" name="storeName" type="text" value="{{this.storeName}}" id="storeNameInput">
+                                    <h5>Website:</h5>
+                                <input class="form-control" name="website"  type="text" value="{{this.website}}" id="storeNameInput">
+                                    <h5>Email:</h5>
+                                <input class="form-control" name="email"  type="text" value="{{this.email}}" id="storeNameInput">
+                                    <h5>Prone:</h5>
+                                <input class="form-control" name="phone"  type="text" value="{{this.phone}}" id="storeNameInput">
+                                    <h5>Allow Pickup:</h5>
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="{{pickupOption.type}}" disabled>
+                                        Allow Customers to place orders for pickup
+                                    </label> 
+                                    <h5>Allow Delivery:</h5>
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="{{deliveryOption.type}}" disabled>
+                                        Allow Customers to place orders for delivery
+                                    </label> 
+                                {{/each}}
+                                <hr>
+                                <button class="btn btn-primary btn-sm"type="submit" >Save New Details</button>
+                                <button class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                </div>
+                <hr>
             </div>
         </div>
-      </form>
-          <hr>
-          <button class="btn btn-primary" data-toggle="modal" data-target="#storeInfoModal" data-dismiss="modal">Save New Details</button>
-          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-          <hr>
-      </div>
-    </div> <!-- Close Modal content  -->
-  </div>
+        <!-- Close Modal content  -->
+    </div>
+</div>
+
+<!-- Modal for Edit Address -->
+<div class="modal fade bd-example-modal-md" id="editStoreAddressModal" tabindex="-1" role="dialog" aria-labelledby="storeInfoModal" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="container text-center">
+                <hr>
+                <h3>Tucker</h3>
+                <hr>
+                 <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Store Address:</h3>
+                            <form method="POST" action="/store/address/?_method=PUT">
+                                {{#each store}}
+                                    <h5>Address:</h5>
+                                    <input class="form-control" name="street"  type="text" value="{{this.Address.street}}">
+                                    <h5>City:</h5>
+                                    <input class="form-control" name="city"  type="text" value="{{this.Address.city}}" >
+                                    <h5>State:</h5>
+                                    <input class="form-control" name="state"  type="text" value="{{this.Address.state}}">
+                                    <h5>Zip Code:</h5>
+                                    <input class="form-control" name="zip_code"  type="text" value="{{this.Address.zip_code}}" >
+                                {{/each}}
+                                <hr>
+                                <button class="btn btn-primary btn-sm" type="submit">Save New Details</button>
+                                <button class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <!-- Close Modal content  -->
+    </div>
 </div>
 
 
-      <!-- FOOTER -->
-      <footer>
-        <div class="container">
-          <p class="float-right"><a href="#">Back to top</a></p>
-          <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </div>
-      </footer>
 
-    </div><!-- /.container -->
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
+</footer>
+
+</div>
+<!-- /.container -->

@@ -1,50 +1,41 @@
-
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Tucker</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+    <a class="navbar-brand" href="#">Tucker</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Shop<a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sell</a>
-          </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-          <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="/store/logout">Logout</a>
         </form>
-      </div>
-    </nav>
+    </div>
+</nav>
 
 <!-- Container for Store Options  -->
 
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Manage Products</h1>
-    <p class="lead">View and edit all items carried in your store</p>
-  </div>
+    <div class="container">
+        <h1 class="display-3">Manage Products</h1>
+        <p class="lead">View and edit all items carried in your store</p>
+    </div>
 
-  <div class="container">
-<!-- Products Table -->
-      <table class="table table-hover table-sm table-responsive">
-          <thead class="thead-default">
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Product Description</th>
-                <th>Price</th>
-                <th>In Stock</th>
-                <th>Discounted (Boolean)</th>
-                <th>Discounted Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each products}}
+    <div class="container">
+        <!-- Products Table -->
+        <table class="table table-hover table-sm table-responsive">
+            <thead class="thead-default">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Price</th>
+                    <th>In Stock</th>
+                    <th>Discounted (Boolean)</th>
+                    <th>Discounted Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
                 <tr>
                     <td>{{this.id}}</td>
                     <td>{{this.ProductDescription.productName}}</td>
@@ -53,23 +44,65 @@
                     <td>{{this.inStock}}</td>
                     <td>{{this.discounted}}</td>
                     <td>{{this.discountedPrice}}</td>
-                    <td><button type="button" class="btn btn-secondary btn-sm">View / Edit</button></td>
+                    <td><button type="button" class="btn btn-secondary btn-sm">Edit</button></td>
                 </tr>
-            {{/each}}
-          </tbody>
-      </table>
+                {{/each}}
+            </tbody>
+        </table>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addNewProduct" data-dismiss="modal">Add Product</button>
     </div>
 </div>
+
+<<!-- Add new produc model-->>
+    <div class="modal fade bd-example-modal-md" id="addNewProduct" tabindex="-1" role="dialog" aria-labelledby="addNewProduct" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="container text-center">
+                    <hr>
+                    <h3>Tucker</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Store Address:</h3>
+                            <form method="POST" action="/store/product/">
+                                <select name="ProductDescriptionId">
+                                        {{#each products}}
+                                        <option value="{{this.ProductDescription.id}}">{{this.ProductDescription.productName}}</option>
+                                        {{/each}}
+                                </select>
+                                <h5>Price:</h5>
+                                <input class="form-control" name="price"  type="text" placeholder="price">
+                                <h5>In stock:</h5>
+                                <input class="form-control" name="inStock"  type="text" placeholder="in stock">
+                                 <h5>Is discounted:</h5>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="discounted" type="checkbox" value="false">
+                                </label> 
+                                <h5>Discounted Price:</h5>
+                                <input class="form-control" name="discountedPrice"  type="text" placeholder="discountedPriice">
+
+                                <hr>
+                                <button class="btn btn-primary btn-sm" type="submit">Add to Stock</button>
+                                <button class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <!-- Close Modal content  -->
+        </div>
+    </div>
 
 
 
     <!-- FOOTER -->
     <footer>
-      <div class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </div>
+        <div class="container">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2017 Tucker, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </div>
     </footer>
 
-    </div><!-- /.container -->
-
+    </div>
+    <!-- /.container -->

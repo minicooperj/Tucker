@@ -15,11 +15,13 @@ module.exports = function(app, passport) {
 
     app.put('/store/address', isLoggedIn, storeController.updateAddress);
 
-    app.put('/store/info', isLoggedIn, storeController.updateProductInfo);
+    app.put('/store/info', isLoggedIn, storeController.updateStoreInfo);
 
     app.get('/store/info', isLoggedIn, storeController.getStoreInfo);
 
     app.get('/stores', isLoggedIn, storeController.getStores);
+
+    app.get('/store/orders', isLoggedIn, storeController.getOrders);
 
     app.post('/store/product', isLoggedIn, storeController.addProduct);
 

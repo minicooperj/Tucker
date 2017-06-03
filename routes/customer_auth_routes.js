@@ -23,17 +23,17 @@ module.exports = function(app, passport) {
 
     app.delete('customer/bucket/:productId', isLoggedIn, customerController.updateBucker);
 
-    app.put('customer/bucket/:productId', isLoggedIn, customerController.addToBucket);
+    app.post('customer/bucket/:productId', isLoggedIn, customerController.addToBucket);
 
     app.post('/customer/signup', passport.authenticate('customer-signup', {
-        successRedirect: '/customer/index',
-        failureRedirect: '/customer/signup',
+        successRedirect: 'http://localhost:9000/#/customer',
+        failureRedirect: 'http://localhost:9000/#/customer',
         failureFlash: true
     }));
 
     app.post('/customer/signin', passport.authenticate('customer-signin', {
-        successRedirect: '/customer/index',
-        failureRedirect: '/customer/signin',
+        successRedirect: 'http://localhost:9000/#/customer',
+        failureRedirect: 'http://localhost:9000/#/customer',
         failureFlash: 'Invalid username or password.'
     }));
 

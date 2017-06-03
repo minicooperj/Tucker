@@ -8,20 +8,31 @@ var bodyParser = require("body-parser");
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
 var flash = require('connect-flash');
+var methodOverride = require('method-override');
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+/*Allows Cross Origin Requests CORS*/
+app.all("/*", function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    return next();
+});
+
 // Requiring our models for syncing
 var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(methodOverride('_method'));
+
 
 // For Passport
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
@@ -45,6 +56,9 @@ require('./routes/store_auth_routes.js')(app, passport);
 
 //html routes
 app.use("/", require('./routes/html_routes.js'));
+
+//anon routes
+require('./routes/anon_routes.js')(app);
 
 //====================================================================
 

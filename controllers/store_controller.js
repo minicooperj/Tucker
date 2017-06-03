@@ -16,6 +16,10 @@ exports.logout = function(req, res) {
     });
 };
 
+exports.getOrders = function(req, res) {
+    res.render("store_pages/manage_orders");
+};
+
 exports.indexPage = function(req, res) {
     console.log('Logined user', req.user);
     storeORM.getStoreInfo(req.user.id, store => {
@@ -38,14 +42,15 @@ exports.getAddress = function(req, res) {
 };
 
 exports.updateAddress = function(req, res) {
+    console.log('new address: ', req.body);
     storeORM.updateStoreAddress(req.body, req.user.id, address => {
-        res.render('store_pages/address', address);
+        res.redirect("/store/index");
     });
 };
 
 exports.updateStoreInfo = function(req, res) {
     storeORM.updateStoreInfo(req.body, req.user.id, store => {
-        res.render("store_pages/info", store);
+        res.redirect('/store/index');
     });
 };
 
@@ -62,13 +67,16 @@ exports.getStores = function(req, res) {
 };
 
 exports.addProduct = function(req, res) {
-    storeORM.addProduct(req.body, req.user.id, newProduct => {
-        res.render('store_pages/product', newProduct);
+    console.log('New Product:', req.body);
+    var newProduct = req.body;
+    newProduct.StoreId = req.user.id;
+    storeORM.addProduct(newProduct, req.user.id, newProduct => {
+        res.redirect("/store/product");
     });
 };
 
 exports.updateProductInfo = function(req, res) {
-    storeORM.updateProductInfo(req.body, store => {
+    storeORM.updateProductInfo(req.body, req.user.id, store => {
         res.render("store_pages/product", store);
     });
 };
