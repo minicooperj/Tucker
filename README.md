@@ -7,7 +7,7 @@ The Tucker platform is THE tool for small grocery stores to connect with their l
 <hr>
 
 
-The Story:
+<b>The Story:</b>
 
 For the about 60.000 independent grocery and specialty food stores in the U.S., it's getting harder to compete in marketplace against traditional grocery store chains, not to mention the emergence and rise of online retailers like Jet and Amazon in the grocery space.
 
@@ -21,7 +21,7 @@ In urban areas, where customers may not have cars to haul bags and bags of groce
 
 <hr>
 
-Features:
+<b>Features:</b>
 
 Customer-Side:
 
@@ -45,7 +45,7 @@ Store-Side:
 
 <hr>
 
-How we did it:
+<b>How we did it:</b>
 
     Front-end on Bootstrap 4 framework
     
@@ -53,7 +53,7 @@ How we did it:
     
         
 
-Where we're going in 2017:
+<b>Where we're going in 2017:</b>
 
     Complete front-end redesign using Materialize for improved user experience.
 
